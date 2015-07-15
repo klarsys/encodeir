@@ -61,9 +61,13 @@ int main(int argc, char** argv)
 
 	// Output
 	p = 1000000. / Irp.m_frequency;
-	for (int i = 0; i < 2 *(s + r); i++)
-		printf ("%s%g", i?" ":"", seq[i]);
-	printf ("\n");
+	printf("{\"period\":%g,\"n\":%d,\"repeat\":[2,%d,%d],\"seq\":[", floor(65536 * p / 2 + 0.5), 2*(s+r), 2*s, 2*(s+r));
+	for (int i = 0; i < 2*(s + r); i+=2) {
+		int v1 = floor(seq[i] / p + 0.5);
+		int v2 = floor((seq[i] + seq[i+1]) / p + 0.5) - v1;
+		printf ("%s%d,%d", i?",":"", v1, v2);
+	}
+	printf ("]}\n");
 	
 	return 0;
 }
