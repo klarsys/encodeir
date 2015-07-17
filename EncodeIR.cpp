@@ -664,8 +664,7 @@ int main(int argc, char** argv)
 {
 	if (argc != 5)
 	{
-usage:
-		printf("Usage: encodeir <protocol> <device> <subdevice> <function>\n");
+		printf("{\"error\":\"invalid arguments\"}\n");
 		return -1;
 	}
 
@@ -711,7 +710,7 @@ usage:
 				break;
 			}
 		if (p < 0) {
-			printf ("Error: Unknown protocol\n");
+			printf ("{\"error\":\"unknown protocol\"}\n");
 			return -1;
 		}
 	}
@@ -720,7 +719,7 @@ usage:
 	// Encode
 	IRP Irp;
 	if (!Irp.readIrpString(irp)) {
-		printf ("Error: Invalid IRP\n");
+		printf ("{\"error\":\"invalid irp\"}\n");
 		return -1;
 	}
 
