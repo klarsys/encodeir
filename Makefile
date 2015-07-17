@@ -1,7 +1,7 @@
-all: encodeir
+all: encodeirz
 
 MakeHex: MakeHex.cpp IRP.cpp
 	g++ -o MakeHex $?
 
-encodeir: EncodeIR.cpp IRP.cpp
-	g++ -o encodeir $?
+encodeirz: EncodeIR.cpp IRP.cpp
+	g++ -o encodeirz $?
