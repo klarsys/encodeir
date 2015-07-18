@@ -17,8 +17,11 @@
 // modify or distribute this program.
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "IRP.h"
+
+#pragma GCC diagnostic ignored "-Wwrite-strings"
+#pragma GCC diagnostic ignored "-Wformat="
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
