@@ -233,14 +233,6 @@ struct protdef protdefs[] = {
 		"Default S=~D\n"
 		"Form=*,D:8,S:8,F:8,63:8,_;*,_\n"
 	, 0 },
-	{ "Jerrold",
-		"Protocol=Jerrold\n"
-		"Frequency=0\n"
-		"Zero=44,-7500\n"
-		"One=44,-11000\n"
-		"Suffix=44,-22500\n"
-		"Form=;F:5,_\n"
-	, 0 },
 	{ "jvc",
 		"Protocol=JVC\n"
 		"Frequency=37900\n"
