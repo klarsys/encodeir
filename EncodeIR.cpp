@@ -709,7 +709,7 @@ int main(int argc, char** argv)
 	if (argc != 5 && argc != 6)
 	{
 		printf("{\"error\":\"invalid arguments\"}\n");
-		return -1;
+		return 0;
 	}
 
 	char irp[1024] = "";
@@ -757,7 +757,7 @@ int main(int argc, char** argv)
 			}
 		if (p < 0) {
 			printf ("{\"error\":\"unknown protocol\"}\n");
-			return -1;
+			return 0;
 		}
 	}
 	strcat(irp, protdefs[p].def);
@@ -766,7 +766,7 @@ int main(int argc, char** argv)
 	IRP Irp;
 	if (!Irp.readIrpString(irp)) {
 		printf ("{\"error\":\"invalid irp\"}\n");
-		return -1;
+		return 0;
 	}
 
 	// Encode
