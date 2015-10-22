@@ -783,7 +783,7 @@ int main(int argc, char** argv)
 
 	// Output
 	prd = 1000000. / Irp.m_frequency;
-	printf("{\"period\":%g,\"n\":%d,\"repeat\":[0,%d,%d],\"seq\":[", floor(65536 * prd / 2 + 0.5), 2*(s+r), 2*s, 2*(s+r));
+	printf("{\"frequency\":%g,\"period\":%g,\"n\":%d,\"repeat\":[0,%d,%d],\"seq\":[", Irp.m_frequency, floor(65536 * prd / 2 + 0.5), 2*(s+r), 2*s, 2*(s+r));
 	for (int i = 0; i < 2*(s + r); i+=2) {
 		int v1 = floor(seq[i] / prd + 0.5);
 		int v2 = floor((seq[i] + seq[i+1]) / prd + 0.5) - v1;
