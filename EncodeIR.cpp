@@ -740,8 +740,13 @@ int main(int argc, char** argv)
 		// Protocol not found, try for special protocols
 		int M = 0;
 		int L = 0;
-		for (int i = 0; i < strlen(prot); i++)
+		for (int i = 0; i < strlen(prot); i++) {
 			prot[i] = toupper(prot[i]);
+			if (prot[i] == '{') {
+				prot[i] = 0;
+				break;
+			}
+		}
 		if (sscanf(prot, "RC6-%d-%d", &M, &L) == 2) {
 			char temp[256];
 			sprintf (temp, "Define M=%d\nDefine L=%d\n", M, L);
