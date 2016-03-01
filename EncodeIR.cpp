@@ -42,6 +42,20 @@ struct protdef protdefs[] = {
 		"R-Suffix=1,-165\n"
 		"Form=*,D:8,S:5,~D:8,~S:5,F:8,~F:8,_;*,_\n"
 	, 0 },
+	{ "apple-I",
+		"Protocol=Apple\n"
+		"Frequency=38400\n"
+		"Time Base=564\n"
+		"One=1,-3\n"
+		"Zero=1,-1\n"
+		"Prefix=16,-8\n"
+		"Suffix=1,-78\n"
+		"R-Prefix=16,-4\n"
+		"R-Suffix=1,-173\n"
+		"Default S=~D\n"
+		"Define C=1+(F:1)+(F:1:1)+(F:1:2)+(F:1:3)+(F:1:4)+(F:1:5)+(F:1:6)+(I:1)+(I:1:1)+(I:1:2)+(I:1:3)+(I:1:4)+(I:1:5)+(I:1:6)+(I:1:7)\n"
+		"Form=*,D:8,S:8,C:1,F:7,I:8,_;*,_\n"
+	, 0 },
 	{ "async",
 		"Protocol=Async\n"
 		"Frequency=43600\n"
@@ -738,8 +752,8 @@ int main(int argc, char** argv)
 		}
 	if (p < 0) {
 		// Protocol not found, try for special protocols
-		int M = 0;
-		int L = 0;
+		int M = 0, L = 0;
+		int I = 0;
 		for (int i = 0; i < strlen(prot); i++) {
 			prot[i] = toupper(prot[i]);
 			if (prot[i] == '{') {
@@ -752,6 +766,12 @@ int main(int argc, char** argv)
 			sprintf (temp, "Define M=%d\nDefine L=%d\n", M, L);
 			strcat(irp, temp);
 			prot = "rc6-M-L";
+		}
+		else if (sscanf(prot, "APPLE-%d", &I) == 1) {
+			char temp[256];
+			sprintf (temp, "Define I=%d\n", I);
+			strcat(irp, temp);
+			prot = "apple-I";
 		}
 		else if (strcmp("NEC", prot) == 0)
 			prot = "nec2";
