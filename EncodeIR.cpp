@@ -457,6 +457,17 @@ struct protdef protdefs[] = {
 		"Suffix=1,-45\n"
 		"Form=;*,D:8,1,-8,F:8,_\n"
 	, 0 },
+	{ "rc5-M-L",
+		"Protocol=RC5\n"
+		"Frequency=36000\n"
+		"Time Base=889\n"
+		"Message Time=128\n"
+		"Zero=1,-1\n"
+		"One=-1,1\n"
+		"Prefix=1\n"
+		"First Bit=MSB\n"
+		"Form=;*,M:1,T:1,D:5,S:(L-16),F:8\n"
+	, 1 },
 	{ "rc5",
 		"Protocol=RC5\n"
 		"Frequency=36000\n"
@@ -761,11 +772,17 @@ int main(int argc, char** argv)
 				break;
 			}
 		}
-		if (sscanf(prot, "RC6-%d-%d", &M, &L) == 2) {
+		if (sscanf(prot, "RC6-%d-%d", &M, &L) == 2 && M < 8 && L >= 16) {
 			char temp[256];
 			sprintf (temp, "Define M=%d\nDefine L=%d\n", M, L);
 			strcat(irp, temp);
 			prot = "rc6-M-L";
+		}
+		if (sscanf(prot, "RC5-%d-%d", &M, &L) == 2 && M < 2 && L >= 16) {
+			char temp[256];
+			sprintf (temp, "Define M=%d\nDefine L=%d\n", M, L);
+			strcat(irp, temp);
+			prot = "rc5-M-L";
 		}
 		else if (sscanf(prot, "APPLE-%d", &I) == 1) {
 			char temp[256];
