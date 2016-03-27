@@ -419,7 +419,7 @@ struct protdef protdefs[] = {
 	{ "pioneer",
 		"Protocol=Pioneer\n"
 		"Frequency=40000\n"
-		"Time Base=564\n"
+		"Time Base=550\n"
 		"One=1,-3\n"
 		"Zero=1,-1\n"
 		"Prefix=16,-8\n"
@@ -431,7 +431,7 @@ struct protdef protdefs[] = {
 		"Define P=86\n"
 		"Protocol=Pioneer2\n"
 		"Frequency=40000\n"
-		"Time Base=564\n"
+		"Time Base=550\n"
 		"One=1,-3\n"
 		"Zero=1,-1\n"
 		"Prefix=16,-8\n"
